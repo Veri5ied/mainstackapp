@@ -1,0 +1,29 @@
+.dropdown-container {
+  border-radius: 12px !important;
+  border: 1px solid #eff1f6 !important;
+  background: #eff1f6 !important;
+  padding: 10px 16px !important;
+  height: 48px !important;
+
+  &:focus-within {
+    border: 3px solid #131316 !important;
+  }
+}
+
+.dropdown-heading {
+  align-items: unset !important;
+  font-family: "Degular Bold" !important;
+}
+
+.dropdown-content {
+  left: 0 !important;
+  background-color: #fff !important;
+}
+
+--rmsc-selected {
+  background-color: #fff !important;
+}
+
+--rmsc-main {
+  background: #000 !important;
+}

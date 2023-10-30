@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import AppLayout from "@/layout/AppLayout";
 import { CiCircleInfo } from "react-icons/ci";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -6,11 +7,33 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { BsArrowDownLeft } from "react-icons/bs";
 import { sampledata } from "@/utils/data";
 import EmptyState from "@/components/empty-state/EmptyState";
+import Slider from "@/components/slider/Slider";
+import { MultiSelect } from "react-multi-select-component";
 
 export default function Home() {
+  const [showSlider, setShowSlider] = useState<boolean>(false);
+  const [selectedTransaction, setSelectedTransaction] = useState<any>([]);
+  const [selectedStatus, setSelectedStatus] = useState<any>([]);
+
   const handleClearFilter = () => {
     console.log("Clear Filter");
   };
+
+  const transactionOptions = [
+    { label: "Store Transactions", value: "Store Transactions" },
+    { label: "Get Tipped", value: "Get Tipped" },
+    { label: "Withdrawals", value: "Withdrawals" },
+    { label: "Chargebacks", value: "Chargebacks" },
+    { label: "Cashbacks", value: "Cashbacks" },
+    { label: "Refer & Earn", value: "Refer & Earn" },
+  ];
+
+  const statusOptions = [
+    { label: "Successful", value: "Successful" },
+    { label: "Pending", value: "Pending" },
+    { label: "Failed", value: "Failed" },
+  ];
+
   return (
     <AppLayout>
       <div className="home__container">
@@ -61,7 +84,7 @@ export default function Home() {
               <p>Your transactions for the last 7 days</p>
             </div>
             <div className="home__container--header-right">
-              <button>
+              <button onClick={() => setShowSlider(!showSlider)}>
                 Filter <MdKeyboardArrowDown size={22} />
               </button>
               <button>
@@ -102,6 +125,45 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Slider show={showSlider} setShowNav={setShowSlider} title="Filter">
+        <div className="home__filter-slider-container">
+          <div className="home__filter-ranges-options">
+            <div className="filter-date-options">Today</div>
+            <div className="filter-date-options">Last 7 days</div>
+            <div className="filter-date-options">This month</div>
+            <div className="filter-date-options">Last 3 months</div>
+          </div>
+          <div className="home__filter-date-range"></div>
+          <div className="home__filter-transaction-select">
+            <label>Transaction Type</label>
+            <MultiSelect
+              options={transactionOptions}
+              value={selectedTransaction}
+              onChange={setSelectedTransaction}
+              labelledBy="Select"
+              className="filter-select-input"
+              disableSearch
+              hasSelectAll={false}
+            />
+          </div>
+          <div className="home__filter-transaction-select">
+            <label>Transaction Status</label>
+            <MultiSelect
+              options={statusOptions}
+              value={selectedStatus}
+              onChange={setSelectedStatus}
+              labelledBy="Select"
+              className="filter-select-input"
+              disableSearch
+              hasSelectAll={false}
+            />
+          </div>
+          <div className="home__filter-slider-btns">
+            <button className="clear-filter">Clear</button>
+            <button className="apply-filter">Apply</button>
+          </div>
+        </div>
+      </Slider>
     </AppLayout>
   );
 }

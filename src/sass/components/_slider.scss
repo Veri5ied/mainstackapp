@@ -1,0 +1,41 @@
+.slider {
+  width: 456px;
+  background: #fff;
+  border-radius: 20px;
+  position: fixed;
+  height: 100%;
+  min-height: 100vh;
+  right: -100%;
+  top: 0;
+  transition: all 1s;
+  z-index: 999;
+  box-shadow: 0px 8px 16px 4px rgba(188, 196, 204, 0.1),
+    0px 12px 24px 0px rgba(219, 222, 229, 0.1),
+    0px 16px 32px 0px rgba(219, 222, 229, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 22px;
+}
+
+.slider.active {
+  right: 0;
+  top: 0;
+}
+
+.slider--title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h3 {
+    color: #131316;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidenav {
+    width: 100%;
+  }
+}

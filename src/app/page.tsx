@@ -23,13 +23,7 @@ export default function Home() {
   const [selectedStatus, setSelectedStatus] = useState<any>([]);
 
   const [filteredTransact, setFilteredTransact] = useState<any>([]);
-  const [state, setState] = useState<any>([
-    {
-      startDate: new Date(),
-      endDate: null,
-      key: "selection",
-    },
-  ]);
+  const [state, setState] = useState<any>([]);
 
   const csvConfig = mkConfig({ useKeysAsHeaders: true });
 

@@ -13,7 +13,10 @@
     "axios": "^1.6.0",
     "next": "14.0.0",
     "react": "^18",
+    "react-charts": "^3.0.0-beta.56",
     "react-dom": "^18",
+    "react-huge-icons": "^1.3.7",
+    "react-icons": "^4.11.0",
     "sass": "^1.69.5"
   },
   "devDependencies": {

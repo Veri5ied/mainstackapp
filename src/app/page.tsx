@@ -1,95 +1,70 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import AppLayout from "@/layout/AppLayout";
+import { CiCircleInfo } from "react-icons/ci";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { AiOutlineDownload } from "react-icons/ai";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <AppLayout>
+      <div className="home__container">
+        <div className="home__container-top">
+          <div className="home__container-left">
+            <div className="home__container-left-header">
+              <div className="home__container-left-content">
+                <p>Available Balance</p>
+                <h2>USD 120,500.00</h2>
+              </div>
+              <button>Withdraw</button>
+            </div>
+          </div>
+          <div className="home__container-right">
+            <div className="home__container-right-items">
+              <p>
+                Ledger Balance
+                <CiCircleInfo />
+              </p>
+              <h3>USD 0.00</h3>
+            </div>
+            <div className="home__container-right-items">
+              <p>
+                Total Payout
+                <CiCircleInfo />
+              </p>
+              <h3>USD 55,080.00</h3>
+            </div>
+            <div className="home__container-right-items">
+              <p>
+                Total Revenue
+                <CiCircleInfo />
+              </p>
+              <h3>USD 175,580.00</h3>
+            </div>
+            <div className="home__container-right-items">
+              <p>
+                Pending Payout <CiCircleInfo />
+              </p>
+              <h3>USD 0.00</h3>
+            </div>
+          </div>
+        </div>
+        <div className="home__container-bottom">
+          <div className="home__container-bottom--header">
+            <div className="home__container--header-left">
+              <h2>24 Transactions</h2>
+              <p>Your transactions for the last 7 days</p>
+            </div>
+            <div className="home__container--header-right">
+              <button>
+                Filter <MdKeyboardArrowDown size={22} />
+              </button>
+              <button>
+                Export list <AiOutlineDownload size={22} />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </AppLayout>
+  );
 }

@@ -131,6 +131,74 @@
           letter-spacing: -0.4px;
           color: #131316;
           font-family: "Degular Bold";
+          cursor: pointer;
+        }
+      }
+    }
+
+    .home__container-bottom-transactions {
+      margin-top: 3rem;
+      display: grid;
+      gap: 24px;
+
+      .transaction--items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .transaction--items-left {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          .transaction-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+          }
+
+          .transaction--item-content {
+            p {
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 24px;
+              letter-spacing: -0.2px;
+              color: #131316;
+            }
+
+            span {
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 16px;
+              letter-spacing: -0.2px;
+              color: #56616b;
+              font-family: "Degular normal";
+            }
+          }
+        }
+
+        .transaction--items-right {
+          h3 {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%;
+            letter-spacing: -0.4px;
+            color: #131316;
+          }
+
+          p {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 16px;
+            letter-spacing: -0.2px;
+            color: #56616b;
+          }
         }
       }
     }

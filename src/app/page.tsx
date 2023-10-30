@@ -3,6 +3,8 @@ import AppLayout from "@/layout/AppLayout";
 import { CiCircleInfo } from "react-icons/ci";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { AiOutlineDownload } from "react-icons/ai";
+import { BsArrowDownLeft } from "react-icons/bs";
+import { sampledata } from "@/utils/data";
 
 export default function Home() {
   return (
@@ -62,6 +64,36 @@ export default function Home() {
                 Export list <AiOutlineDownload size={22} />
               </button>
             </div>
+          </div>
+          <div className="home__container-bottom-transactions">
+            {sampledata?.map(
+              ({ narration, name, price, date, status }, idx) => (
+                <div className="transaction--items" key={idx}>
+                  <div className="transaction--items-left">
+                    <div
+                      className="transaction-icon"
+                      style={{
+                        backgroundColor:
+                          status === "success" ? "#E3FCF2" : "#F9E3E0",
+                      }}
+                    >
+                      <BsArrowDownLeft
+                        size={22}
+                        color={status === "success" ? "#075132" : "#961100"}
+                      />
+                    </div>
+                    <div className="transaction--item-content">
+                      <p>{narration}</p>
+                      <span>{name}</span>
+                    </div>
+                  </div>
+                  <div className="transaction--items-right">
+                    <h3>{price}</h3>
+                    <p>{date}</p>
+                  </div>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>

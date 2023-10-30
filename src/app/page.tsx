@@ -15,6 +15,7 @@ import axiosInstance from "@/services/api.service";
 import { useQuery } from "@tanstack/react-query";
 import apiRoutes from "@/utils/apiRoutes";
 import Loading from "@/components/loading/Loading";
+import { mkConfig, generateCsv, download } from "export-to-csv";
 
 export default function Home() {
   const [showSlider, setShowSlider] = useState<boolean>(false);
@@ -29,6 +30,8 @@ export default function Home() {
       key: "selection",
     },
   ]);
+
+  const csvConfig = mkConfig({ useKeysAsHeaders: true });
 
   const fetchWalletBalances = async () => {
     const res = await axiosInstance.get(apiRoutes.wallet);
@@ -53,6 +56,21 @@ export default function Home() {
   });
 
   const transaction_res = transactions?.data;
+
+  const csvdata = transaction_res?.map((transaction: any) => {
+    return {
+      date: transaction?.date,
+      amount: transaction?.amount,
+      status: transaction?.status,
+      product_name: transaction?.metadata?.product_name,
+      name: transaction?.metadata?.name,
+    };
+  });
+
+  const csv = csvdata ? generateCsv(csvConfig)(csvdata) : undefined;
+  const handleExport = () => {
+    download(csvConfig)(csv as any);
+  };
 
   const handleApplyFilters = () => {
     const filteredTransactions = transaction_res?.filter((transaction: any) => {
@@ -185,7 +203,7 @@ export default function Home() {
               <button onClick={() => setShowSlider(!showSlider)}>
                 Filter <MdKeyboardArrowDown size={22} />
               </button>
-              <button>
+              <button onClick={handleExport}>
                 Export list <AiOutlineDownload size={22} />
               </button>
             </div>

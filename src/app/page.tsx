@@ -5,7 +5,6 @@ import { CiCircleInfo } from "react-icons/ci";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { AiOutlineDownload } from "react-icons/ai";
 import { BsArrowDownLeft } from "react-icons/bs";
-import { sampledata } from "@/utils/data";
 import EmptyState from "@/components/empty-state/EmptyState";
 import Slider from "@/components/slider/Slider";
 import { MultiSelect } from "react-multi-select-component";
@@ -21,6 +20,8 @@ export default function Home() {
   const [showSlider, setShowSlider] = useState<boolean>(false);
   const [selectedTransaction, setSelectedTransaction] = useState<any>([]);
   const [selectedStatus, setSelectedStatus] = useState<any>([]);
+
+  const [filteredTransact, setFilteredTransact] = useState<any>([]);
   const [state, setState] = useState<any>([
     {
       startDate: new Date(),
@@ -53,8 +54,37 @@ export default function Home() {
 
   const transaction_res = transactions?.data;
 
+  const handleApplyFilters = () => {
+    const filteredTransactions = transaction_res?.filter((transaction: any) => {
+      return (
+        selectedStatus
+          .map((status: any) => status.value?.toLowerCase())
+          .includes(transaction?.status?.toLowerCase()) ||
+        selectedTransaction.includes(transaction?.metadata?.product_name)
+      );
+    });
+
+    setFilteredTransact(filteredTransactions);
+    setShowSlider(false);
+  };
+
+  const displayTransactions =
+    filteredTransact?.length === 0
+      ? selectedStatus?.length === 0
+        ? transaction_res
+        : filteredTransact
+      : filteredTransact;
+
   const handleClearFilter = () => {
-    console.log("Clear Filter");
+    setSelectedStatus([]);
+    setSelectedTransaction([]);
+    setState([
+      {
+        startDate: new Date(),
+        endDate: null,
+        key: "selection",
+      },
+    ]);
   };
 
   const transactionOptions = [
@@ -148,7 +178,7 @@ export default function Home() {
         <div className="home__container-bottom">
           <div className="home__container-bottom--header">
             <div className="home__container--header-left">
-              <h2>{transaction_res?.length} Transactions</h2>
+              <h2>{displayTransactions?.length} Transactions</h2>
               <p>Your transactions for the last 7 days</p>
             </div>
             <div className="home__container--header-right">
@@ -174,12 +204,12 @@ export default function Home() {
                 <Loading />
               </div>
             )}
-            {!loading && transaction_res?.length === 0 && (
+            {!loading && displayTransactions?.length === 0 && (
               <EmptyState onClick={handleClearFilter} />
             )}
             {!loading &&
-              transaction_res?.length > 0 &&
-              transaction_res?.map((transaction: any, idx: number) => (
+              displayTransactions?.length > 0 &&
+              displayTransactions?.map((transaction: any, idx: number) => (
                 <div className="transaction--items" key={idx}>
                   <div className="transaction--items-left">
                     <div
@@ -215,35 +245,6 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            {/*  {sampledata?.map(
-              ({ narration, name, price, date, status }, idx) => (
-                <div className="transaction--items" key={idx}>
-                  <div className="transaction--items-left">
-                    <div
-                      className="transaction-icon"
-                      style={{
-                        backgroundColor:
-                          status === "success" ? "#E3FCF2" : "#F9E3E0",
-                      }}
-                    >
-                      <BsArrowDownLeft
-                        size={22}
-                        color={status === "success" ? "#075132" : "#961100"}
-                      />
-                    </div>
-                    <div className="transaction--item-content">
-                      <p>{narration}</p>
-                      <span>{name}</span>
-                    </div>
-                  </div>
-                  <div className="transaction--items-right">
-                    <h3>{price}</h3>
-                    <p>{date}</p>
-                  </div>
-                </div>
-              )
-            )} */}
-            {/* <EmptyState onClick={handleClearFilter} /> */}
           </div>
         </div>
       </div>
@@ -294,7 +295,9 @@ export default function Home() {
           </div>
           <div className="home__filter-slider-btns">
             <button className="clear-filter">Clear</button>
-            <button className="apply-filter">Apply</button>
+            <button className="apply-filter" onClick={handleApplyFilters}>
+              Apply
+            </button>
           </div>
         </div>
       </Slider>

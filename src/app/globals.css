@@ -41,3 +41,13 @@ h6 {
 button {
   border: none;
 }
+
+label {
+  color: #131316;
+  font-family: "Degular Bold";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+}

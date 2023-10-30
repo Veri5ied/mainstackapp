@@ -9,6 +9,10 @@ import UserGroups from "../custom-svgs/CRM";
 import { usePathname } from "next/navigation";
 import { BsBell, BsChatLeftText } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
+import axiosInstance from "@/services/api.service";
+import { useQuery } from "@tanstack/react-query";
+import apiRoutes from "@/utils/apiRoutes";
+import Loading from "@/components/loading/Loading";
 
 const TopNavigation = () => {
   const pathname = usePathname();
@@ -39,6 +43,23 @@ const TopNavigation = () => {
       icon: <MdOutlineWidgets size={22} />,
     },
   ];
+
+  const fetchUser = async () => {
+    const res = await axiosInstance.get(apiRoutes.user);
+    return res;
+  };
+
+  const { data: user, isLoading } = useQuery({
+    queryKey: ["user"],
+    queryFn: () => fetchUser(),
+  });
+
+  const user_res = user?.data;
+
+  //get user name initials
+  const username =
+    user_res?.first_name?.charAt(0) + user_res?.last_name?.charAt(0);
+
   return (
     <div className="topnavigation">
       <div className="topnavigation--left">
@@ -61,7 +82,7 @@ const TopNavigation = () => {
         <BsChatLeftText size={22} />
         <div className="topnavigation-right-menu">
           <div className="topnavigation-user">
-            <h2>OJ</h2>
+            <h2>{isLoading ? "..." : <>{username}</>}</h2>
           </div>
           <AiOutlineMenu size={22} />
         </div>

@@ -4,6 +4,7 @@
   background: #eff1f6 !important;
   padding: 10px 16px !important;
   height: 48px !important;
+  outline: none !important;
 
   &:focus-within {
     border: 3px solid #131316 !important;
@@ -12,7 +13,7 @@
 
 .dropdown-heading {
   align-items: unset !important;
-  font-family: "Degular Bold" !important;
+  font-family: "Degular normal" !important;
 }
 
 .dropdown-content {

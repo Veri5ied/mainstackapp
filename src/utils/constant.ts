@@ -1,1 +1,1 @@
-export const BASE_URL = "https://fe-task-api.mainstack.io";
+export const BASE_URL = "https://fe-task-api.mainstack.io/";

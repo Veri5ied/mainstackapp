@@ -1,0 +1,44 @@
+.emptystate__container {
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 3rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .emptystate-icon {
+    border-radius: 16px;
+    background: linear-gradient(135deg, #dbdee5 1.89%, #f6f7f9 98.77%);
+    width: fit-content;
+    padding: 12px;
+  }
+
+  h3 {
+    max-width: 369px;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.6px;
+  }
+
+  p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    color: #56616b;
+  }
+
+  button {
+    border-radius: 100px;
+    background: #eff1f6;
+    padding: 12px 24px;
+    width: 117px;
+    font-family: "Degular Bold";
+  }
+}

@@ -5,8 +5,12 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { AiOutlineDownload } from "react-icons/ai";
 import { BsArrowDownLeft } from "react-icons/bs";
 import { sampledata } from "@/utils/data";
+import EmptyState from "@/components/empty-state/EmptyState";
 
 export default function Home() {
+  const handleClearFilter = () => {
+    console.log("Clear Filter");
+  };
   return (
     <AppLayout>
       <div className="home__container">
@@ -53,7 +57,7 @@ export default function Home() {
         <div className="home__container-bottom">
           <div className="home__container-bottom--header">
             <div className="home__container--header-left">
-              <h2>24 Transactions</h2>
+              <h2>{sampledata.length} Transactions</h2>
               <p>Your transactions for the last 7 days</p>
             </div>
             <div className="home__container--header-right">
@@ -94,6 +98,7 @@ export default function Home() {
                 </div>
               )
             )}
+            {/* <EmptyState onClick={handleClearFilter} /> */}
           </div>
         </div>
       </div>

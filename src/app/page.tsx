@@ -125,7 +125,12 @@ export default function Home() {
     { label: "Failed", value: "Failed" },
   ];
 
-  const tickValues = [1, 5];
+  const data = [
+    { x: "Apr 1, 2022", y: 8 },
+    { x: "Apr 30, 2022", y: 8 },
+  ];
+
+  const tickValues = [8, 8];
 
   return (
     <AppLayout>
@@ -153,13 +158,7 @@ export default function Home() {
                     data: { stroke: "#FF5403" },
                     parent: { border: "1px solid #ccc" },
                   }}
-                  data={[
-                    { x: 1, y: 2 },
-                    { x: 2, y: 3 },
-                    { x: 3, y: 5 },
-                    { x: 4, y: 4 },
-                    { x: 5, y: 7 },
-                  ]}
+                  data={data}
                 />
                 <VictoryAxis dependentAxis={false} tickValues={tickValues} />
               </VictoryChart>

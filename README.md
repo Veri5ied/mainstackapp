@@ -16,6 +16,15 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Tools used
+
+- TypeScript.
+- Next JS: React JS framework for building UIs.
+- SASS/SCSS: For Styling.
+- Axios: For instances.
+- React Query: For fetching and caching of API calls.
+- Victory: For charts/graph.
+
 ## Deployed on Vercel
 
 This project is deployed on Vercel [Live Hosting URL](https://mainstackapp.vercel.app/)
@@ -23,4 +32,5 @@ This project is deployed on Vercel [Live Hosting URL](https://mainstackapp.verce
 ## Side Note =>
 
 - This project is not responsive as there was no mobile view on the design.
-- Also the api doesn't support filtering by date or other parameters, so filters we manually done using the javascript filter function
+- Also the API doesn't support filtering by date or other parameters, so filters we manually done using the javascript filter function.
+- Graph is plotted using amount from transactions.

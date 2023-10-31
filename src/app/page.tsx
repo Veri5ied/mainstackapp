@@ -125,6 +125,8 @@ export default function Home() {
     { label: "Failed", value: "Failed" },
   ];
 
+  const tickValues = [1, 5];
+
   return (
     <AppLayout>
       <div className="home__container">
@@ -159,7 +161,7 @@ export default function Home() {
                     { x: 5, y: 7 },
                   ]}
                 />
-                <VictoryAxis dependentAxis={false} />
+                <VictoryAxis dependentAxis={false} tickValues={tickValues} />
               </VictoryChart>
             </div>
           </div>

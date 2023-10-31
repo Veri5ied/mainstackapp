@@ -16,13 +16,7 @@ import { useQuery } from "@tanstack/react-query";
 import apiRoutes from "@/utils/apiRoutes";
 import Loading from "@/components/loading/Loading";
 import { mkConfig, generateCsv, download } from "export-to-csv";
-import {
-  VictoryLine,
-  VictoryChart,
-  VictoryTheme,
-  VictoryAxis,
-  VictoryContainer,
-} from "victory";
+import { VictoryLine, VictoryChart, VictoryAxis } from "victory";
 
 export default function Home() {
   const [showSlider, setShowSlider] = useState<boolean>(false);

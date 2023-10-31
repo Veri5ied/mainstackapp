@@ -33,4 +33,4 @@ This project is deployed on Vercel [Live Hosting URL](https://mainstackapp.verce
 
 - This project is not responsive as there was no mobile view on the design.
 - Also the API doesn't support filtering by date or other parameters, so filters we manually done using the javascript filter function.
-- Graph is plotted using amount from transactions.
+- Graph is plotted using amount from transactions because no parameters for plotting graphs was in API

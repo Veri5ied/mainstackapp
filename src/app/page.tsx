@@ -125,12 +125,16 @@ export default function Home() {
     { label: "Failed", value: "Failed" },
   ];
 
-  const data = [
-    { x: "Apr 1, 2022", y: 5 },
-    { x: "Apr 30, 2022", y: 6 },
-    { x: "Apr 1, 2022", y: 7 },
-    { x: "Apr 30, 2022", y: 8 },
-  ];
+  const data = transaction_res?.map(
+    (transaction: {
+      date: string | number | Date | undefined;
+      amount: any;
+    }) => {
+      return {
+        y: transaction?.amount,
+      };
+    }
+  );
 
   const customTickValues = ["Apr 1, 2022", "Apr 30, 2022"];
 

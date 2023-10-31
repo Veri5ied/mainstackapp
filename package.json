@@ -32,7 +32,8 @@
     "react-icons": "^4.11.0",
     "react-multi-select-component": "^4.3.4",
     "sass": "^1.69.5",
-    "ts-jest": "^29.1.1"
+    "ts-jest": "^29.1.1",
+    "victory": "^36.6.11"
   },
   "devDependencies": {
     "@types/node": "^20",

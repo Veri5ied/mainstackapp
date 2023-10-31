@@ -16,6 +16,13 @@ import { useQuery } from "@tanstack/react-query";
 import apiRoutes from "@/utils/apiRoutes";
 import Loading from "@/components/loading/Loading";
 import { mkConfig, generateCsv, download } from "export-to-csv";
+import {
+  VictoryLine,
+  VictoryChart,
+  VictoryTheme,
+  VictoryAxis,
+  VictoryContainer,
+} from "victory";
 
 export default function Home() {
   const [showSlider, setShowSlider] = useState<boolean>(false);
@@ -70,9 +77,13 @@ export default function Home() {
     const filteredTransactions = transaction_res?.filter((transaction: any) => {
       return (
         selectedStatus
-          .map((status: any) => status.value?.toLowerCase())
+          .map((status: { value: string }) => status.value?.toLowerCase())
           .includes(transaction?.status?.toLowerCase()) ||
-        selectedTransaction.includes(transaction?.metadata?.product_name)
+        selectedTransaction
+          .map((transactions: { value: string }) =>
+            transactions.value?.toLowerCase()
+          )
+          .includes(transaction?.metadata?.product_name?.toLowerCase())
       );
     });
 
@@ -131,6 +142,25 @@ export default function Home() {
                 </h2>
               </div>
               <button>Withdraw</button>
+            </div>
+            <div className="home__container-left-chart">
+              <VictoryChart width={762} height={257}>
+                <VictoryLine
+                  interpolation="natural"
+                  style={{
+                    data: { stroke: "#FF5403" },
+                    parent: { border: "1px solid #ccc" },
+                  }}
+                  data={[
+                    { x: 1, y: 2 },
+                    { x: 2, y: 3 },
+                    { x: 3, y: 5 },
+                    { x: 4, y: 4 },
+                    { x: 5, y: 7 },
+                  ]}
+                />
+                <VictoryAxis dependentAxis={false} />
+              </VictoryChart>
             </div>
           </div>
           <div className="home__container-right">

@@ -169,6 +169,11 @@ export default function Home() {
                 <VictoryAxis
                   dependentAxis={false}
                   tickValues={customTickValues}
+                  style={{
+                    axisLabel: {
+                      color: "#56616B",
+                    },
+                  }}
                 />
               </VictoryChart>
             </div>
@@ -346,7 +351,9 @@ export default function Home() {
             />
           </div>
           <div className="home__filter-slider-btns">
-            <button className="clear-filter">Clear</button>
+            <button className="clear-filter" onClick={handleClearFilter}>
+              Clear
+            </button>
             <button className="apply-filter" onClick={handleApplyFilters}>
               Apply
             </button>

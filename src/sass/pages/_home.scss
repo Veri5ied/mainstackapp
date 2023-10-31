@@ -234,6 +234,11 @@
       line-height: 16px;
       letter-spacing: -0.4px;
       cursor: pointer;
+
+      &:hover {
+        background: #131316;
+        color: #fff;
+      }
     }
   }
 
@@ -276,6 +281,7 @@
       border-radius: 100px;
       width: 100%;
       font-family: "Degular normal";
+      cursor: pointer;
     }
 
     .clear-filter {

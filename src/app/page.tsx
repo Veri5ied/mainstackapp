@@ -126,11 +126,13 @@ export default function Home() {
   ];
 
   const data = [
-    { x: "Apr 1, 2022", y: 8 },
+    { x: "Apr 1, 2022", y: 5 },
+    { x: "Apr 30, 2022", y: 6 },
+    { x: "Apr 1, 2022", y: 7 },
     { x: "Apr 30, 2022", y: 8 },
   ];
 
-  const tickValues = [8, 8];
+  const customTickValues = ["Apr 1, 2022", "Apr 30, 2022"];
 
   return (
     <AppLayout>
@@ -160,7 +162,10 @@ export default function Home() {
                   }}
                   data={data}
                 />
-                <VictoryAxis dependentAxis={false} tickValues={tickValues} />
+                <VictoryAxis
+                  dependentAxis={false}
+                  tickValues={customTickValues}
+                />
               </VictoryChart>
             </div>
           </div>
